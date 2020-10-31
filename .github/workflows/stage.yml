@@ -33,6 +33,6 @@ jobs:
         with:
           java-version: 11.0.4
       - name: SonarCloud Scan
-        run: ./gradlew sonarqube
+        run: ./gradlew -Dsonar.login=${{ secrets.SONAR_TOKEN }} sonarqube  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
