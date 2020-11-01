@@ -33,6 +33,7 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    testCompile "org.concordion:concordion:+"
 }
 
 dependencyManagement {
@@ -76,4 +77,10 @@ sonarqube {
         property "sonar.organization", "miguelepq12"
         property "sonar.host.url", "https://sonarcloud.io"
     }
+}
+
+integrationTest{
+    testLogging.showStandardStreams = true   // display test output on console
+    systemProperties['concordion.output.dir'] = "$reporting.baseDir/spec"  // write output to build/reports/spec
+    outputs.upToDateWhen { false }   // force tests to run even if code hasn't changed
 }

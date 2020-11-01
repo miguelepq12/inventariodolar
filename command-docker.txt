@@ -1,0 +1,6 @@
+Construid docker con dockerfile
+docker build --build-arg PORT=PORT --tag NAME_APP:1.0
+
+Ejecutar docker
+docker run --publish PORT_EXPOSE:8080 --detach --name bb NAME_APP:1.0
+
