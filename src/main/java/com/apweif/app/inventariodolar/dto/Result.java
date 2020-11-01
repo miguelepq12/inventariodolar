@@ -1,13 +1,12 @@
 package com.apweif.app.inventariodolar.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
-@NoArgsConstructor
-@Data
 public class Result {
+    @Getter
     private String estado;
+    @Getter
     private String mensaje;
 }

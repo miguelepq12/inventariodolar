@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.3.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id "org.sonarqube" version "3.0"
+    id 'jacoco'
     id 'java'
 }
 
@@ -23,34 +24,6 @@ ext {
     set('springCloudVersion', "Hoxton.SR8")
 }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
-    testCompile "org.concordion:concordion:+"
-}
-
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
-}
-
-test {
-    useJUnitPlatform()
-}
-
-configurations {
-    integrationTestCompile.extendsFrom testCompile
-    integrationTestRuntime.extendsFrom testRuntime
-    integrationTestImplementation.extendsFrom testImplementation
-}
 
 sourceSets {
     integrationTest {
@@ -68,8 +41,43 @@ task integrationTest(type: Test) {
     classpath = sourceSets.integrationTest.runtimeClasspath
 }
 
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+    integrationTestImplementation.extendsFrom testImplementation
+}
+
 check.dependsOn integrationTest
 integrationTest.mustRunAfter test
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    integrationTestCompile "org.concordion:concordion:+"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+integrationTest{
+    testLogging.showStandardStreams = true   // display test output on console
+    systemProperties['concordion.output.dir'] = "$reporting.baseDir/spec"  // write output to build/reports/spec
+    outputs.upToDateWhen { false }   // force tests to run even if code hasn't changed
+}
 
 sonarqube {
     properties {
@@ -79,8 +87,11 @@ sonarqube {
     }
 }
 
-integrationTest{
-    testLogging.showStandardStreams = true   // display test output on console
-    systemProperties['concordion.output.dir'] = "$reporting.baseDir/spec"  // write output to build/reports/spec
-    outputs.upToDateWhen { false }   // force tests to run even if code hasn't changed
+tasks['sonarqube'].dependsOn test
+tasks['sonarqube'].dependsOn integrationTest
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
 }
