@@ -9,4 +9,6 @@ public class User {
     private String username;
     @Getter
     private String pass;
+    @Getter
+    private String email;
 }
