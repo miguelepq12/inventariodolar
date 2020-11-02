@@ -11,7 +11,7 @@ public class LoginFixture {
     User onlyUser;
 
     boolean existUser(String username, String pass){
-        onlyUser=new User("miguelepq","1234");
+        onlyUser=new User("miguelepq","1234","miguelepq@gmail.com");
         return onlyUser.getUsername().equals(username)&&onlyUser.getPass().equals(pass);
     }
 
