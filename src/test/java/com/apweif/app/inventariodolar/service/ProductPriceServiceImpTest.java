@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @ExtendWith(MockitoExtension.class)
-public class ProductPriceServiceImpTest {
+class ProductPriceServiceImpTest {
 
     @InjectMocks
     ProductPriceService productPriceService=new ProductPricePriceServiceImp();
@@ -40,7 +40,7 @@ public class ProductPriceServiceImpTest {
     }
 
     @Test
-    public void getProductsWithNameTest() {
+    void getProductsWithNameTest() {
         String name="Har";
         String category="";
 
@@ -55,7 +55,7 @@ public class ProductPriceServiceImpTest {
     }
 
     @Test
-    public void getProductsWithCategTest() {
+    void getProductsWithCategTest() {
         String name="";
         String category="Bebidas";
 
@@ -70,7 +70,7 @@ public class ProductPriceServiceImpTest {
     }
 
     @Test
-    public void getProductsWithCrossDtaTest() {
+    void getProductsWithCrossDtaTest() {
         String name="Har";
         String category="Bebidas";
 
@@ -84,7 +84,7 @@ public class ProductPriceServiceImpTest {
     }
 
     @Test
-    public void getProductsTest() {
+    void getProductsTest() {
         String name="";
         String category="";
 
@@ -99,7 +99,7 @@ public class ProductPriceServiceImpTest {
     }
 
     @Test
-    public void addProductTest() {
+    void addProductTest() {
         Product p=new Product("Caraotas", "Comida", 2);
         Product productNew=new Product("4",p.getName(),"cat",p.getPrice());
 

@@ -1,6 +1,5 @@
 package com.apweif.app.inventariodolar.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;

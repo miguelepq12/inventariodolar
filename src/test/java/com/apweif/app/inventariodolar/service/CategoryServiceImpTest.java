@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
-public class CategoryServiceImpTest {
+class CategoryServiceImpTest {
 
     @Test
     void addCategoryTest(){
