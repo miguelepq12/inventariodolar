@@ -7,6 +7,18 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 public class Product {
+
+    public Product(long id,String name,String category, double price) {
+        this.name = name;
+        this.id=id;
+        this.description="";
+        this.category=new Category(0,category,"","",LocalDateTime.now());
+        this.price=price;
+        this.createAt=LocalDateTime.now();
+    }
+
+    @Getter
+    private long id;
     @Getter
     private String name;
     @Getter

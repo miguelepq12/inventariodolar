@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Category {
     @Getter
+    private long id;
+    @Getter
     private String name;
     @Getter
     private String description;

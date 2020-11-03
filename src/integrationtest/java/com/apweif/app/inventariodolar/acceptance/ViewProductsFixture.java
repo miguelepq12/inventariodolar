@@ -18,12 +18,9 @@ public class ViewProductsFixture {
     @Before
     public void before() throws Exception {
         products = new ArrayList<>();
-        products.add(new Product("Harina", "", new Category("Otros", "", "#213231", LocalDateTime.now()),
-                0, LocalDateTime.now()));
-        products.add(new Product("Coca", "", new Category("Bebidas", "", "#213231", LocalDateTime.now()),
-                0, LocalDateTime.now()));
-        products.add(new Product("Harina de trigo", "", new Category("Bebidas alcoholicas", "", "#213231", LocalDateTime.now()),
-                0, LocalDateTime.now()));
+        products.add(new Product(1,"Harina", "Otros", 2));
+        products.add(new Product(1,"Coca cola", "Bebidas", 4));
+        products.add(new Product(1,"Harina de trigo", "Bebidas alcoholicas", 3));
 
     }
 
