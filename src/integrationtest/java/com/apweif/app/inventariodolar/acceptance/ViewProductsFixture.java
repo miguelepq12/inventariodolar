@@ -18,9 +18,9 @@ public class ViewProductsFixture {
     @Before
     public void before() throws Exception {
         products = new ArrayList<>();
-        products.add(new Product(1,"Harina", "Otros", 2));
-        products.add(new Product(1,"Coca cola", "Bebidas", 4));
-        products.add(new Product(1,"Harina de trigo", "Bebidas alcoholicas", 3));
+        products.add(new Product("1","Harina", "Otros", 2));
+        products.add(new Product("1","Coca cola", "Bebidas", 4));
+        products.add(new Product("1","Harina de trigo", "Bebidas alcoholicas", 3));
 
     }
 
@@ -30,9 +30,9 @@ public class ViewProductsFixture {
         } else if (category.isEmpty()) {
             return products.stream().filter(p -> p.getName().contains(name)).count();
         } else if(name.isEmpty()){
-            return products.stream().filter(p -> p.getCategory().getName().equals(category)).count();
+            return products.stream().filter(p -> p.getIdCategory().equals(category)).count();
         }else{
-            return products.stream().filter(p -> p.getCategory().getName().equals(category)||p.getName().contains(name)).count();
+            return products.stream().filter(p -> p.getIdCategory().equals(category)||p.getName().contains(name)).count();
         }
     }
 

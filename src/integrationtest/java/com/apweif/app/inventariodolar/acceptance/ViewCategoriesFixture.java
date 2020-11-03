@@ -17,9 +17,9 @@ public class ViewCategoriesFixture {
     @Before
     public void before() throws Exception {
         categories =new ArrayList<>();
-        categories.add(new Category("Dulces","","#434342", LocalDateTime.now()));
-        categories.add(new Category("Bebidas","","#434342", LocalDateTime.now()));
-        categories.add(new Category("Bebidas alcoholicas","","#434342", LocalDateTime.now()));
+        categories.add(new Category("1","Dulces","","#434342", LocalDateTime.now()));
+        categories.add(new Category("2","Bebidas","","#434342", LocalDateTime.now()));
+        categories.add(new Category("3","Bebidas alcoholicas","","#434342", LocalDateTime.now()));
 
     }
 

@@ -16,7 +16,7 @@ public class AddProductFixture {
         if(name.equals("")|| category.equals("")){
             return new Result("No Exitoso", "Ingrese los datos requeridos");
         }else{
-            Product p =new Product(0,name,description,new Category(0l,category,"","",LocalDateTime.now()),
+            Product p =new Product("0",name,description,"0",
                     price, LocalDateTime.now());
             return new Result("Exitoso", "Producto agregado con exito");
         }

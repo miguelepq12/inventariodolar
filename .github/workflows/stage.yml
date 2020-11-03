@@ -33,6 +33,8 @@ jobs:
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 11.0.4
+      - name: Generate jacoco report
+        run: ./gradlew jacocoTestReport
       - name: SonarCloud Scan
         run: ./gradlew -Dsonar.login=${{ secrets.SONAR_TOKEN }} sonarqube  
         env:
