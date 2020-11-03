@@ -1,7 +1,6 @@
 package com.apweif.app.inventariodolar.acceptance;
 
 import com.apweif.app.inventariodolar.dto.Result;
-import com.apweif.app.inventariodolar.entity.Category;
 import com.apweif.app.inventariodolar.entity.Product;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;

@@ -16,6 +16,7 @@ public class Product {
     public Product(String id,String name,String category, double price) {
         this.name = name;
         this.description="";
+        this.id=id;
         this.idCategory=category;
         this.price=price;
         this.createAt=LocalDateTime.now();

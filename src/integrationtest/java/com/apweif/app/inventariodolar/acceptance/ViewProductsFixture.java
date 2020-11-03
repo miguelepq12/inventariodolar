@@ -1,12 +1,10 @@
 package com.apweif.app.inventariodolar.acceptance;
 
-import com.apweif.app.inventariodolar.entity.Category;
 import com.apweif.app.inventariodolar.entity.Product;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

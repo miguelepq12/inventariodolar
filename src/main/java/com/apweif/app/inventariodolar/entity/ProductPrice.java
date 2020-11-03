@@ -1,9 +1,6 @@
 package com.apweif.app.inventariodolar.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 public class ProductPrice {
     public ProductPrice(Product product,double precioDolar) {

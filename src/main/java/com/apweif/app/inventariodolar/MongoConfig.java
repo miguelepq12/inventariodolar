@@ -2,6 +2,7 @@ package com.apweif.app.inventariodolar;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
+import com.mongodb.MongoTimeoutException;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import lombok.Generated;
@@ -26,7 +27,7 @@ public class MongoConfig {
     }
 
     @Bean
-    public MongoTemplate mongoTemplate() throws Exception {
+    public MongoTemplate mongoTemplate() throws MongoTimeoutException {
         return new MongoTemplate(mongo(), "inventariodb");
     }
 }
