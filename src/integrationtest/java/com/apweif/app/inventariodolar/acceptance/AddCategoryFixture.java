@@ -14,7 +14,7 @@ public class AddCategoryFixture {
         if(name.equals("")|| color.equals("")){
             return new Result("No Exitoso", "Ingrese los datos requeridos");
         }else{
-            Category category =new Category(name,description,color, LocalDateTime.now());
+            Category category =new Category("1",name,description,color, LocalDateTime.now());
             return new Result("Exitoso", "Categoría agregada con exito");
         }
     }
