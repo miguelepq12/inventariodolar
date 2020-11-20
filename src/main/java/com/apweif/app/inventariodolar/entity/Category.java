@@ -1,5 +1,6 @@
 package com.apweif.app.inventariodolar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -28,5 +29,6 @@ public class Category {
     @Getter
     private String color;
     @Getter
+    @JsonIgnore
     private LocalDateTime createAt;
 }

@@ -36,7 +36,7 @@ jobs:
         with:
           java-version: 11.0.4
       - name: Generate jacoco report
-        run: ./gradlew clean check
+        run: ./gradlew clean check jacocoTestReport
       - name: SonarCloud Scan
         run: ./gradlew -Dsonar.login=${{ secrets.SONAR_TOKEN }} sonarqube  
         env:

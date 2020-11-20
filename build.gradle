@@ -26,29 +26,29 @@ ext {
 
 
 sourceSets {
-    integrationTest {
+    integrationtest {
         java {
             compileClasspath += main.output + test.output
             runtimeClasspath += main.output + test.output
-            srcDir file('src/integration-test/java')
+            srcDir file('src/integrationtest/java')
         }
-        resources.srcDir file('src/integration-test/resources')
+        resources.srcDir file('src/integrationtest/resources')
     }
 }
 
-task integrationTest(type: Test) {
-    testClassesDirs = sourceSets.integrationTest.output.classesDirs
-    classpath = sourceSets.integrationTest.runtimeClasspath
+task integrationtest(type: Test) {
+    testClassesDirs = sourceSets.integrationtest.output.classesDirs
+    classpath = sourceSets.integrationtest.runtimeClasspath
 }
 
 configurations {
-    integrationTestCompile.extendsFrom testCompile
-    integrationTestRuntime.extendsFrom testRuntime
-    integrationTestImplementation.extendsFrom testImplementation
+    integrationtestCompile.extendsFrom testCompile
+    integrationtestRuntime.extendsFrom testRuntime
+    integrationtestImplementation.extendsFrom testImplementation
 }
 
-check.dependsOn integrationTest
-integrationTest.mustRunAfter test
+check.dependsOn integrationtest
+integrationtest.mustRunAfter test
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
@@ -60,7 +60,8 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-    integrationTestCompile "org.concordion:concordion:+"
+    integrationtestCompile "org.concordion:concordion:+"
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 
 dependencyManagement {
@@ -71,14 +72,12 @@ dependencyManagement {
 
 test {
     useJUnitPlatform()
-    finalizedBy jacocoTestReport
 }
 
-integrationTest{
+integrationtest{
     testLogging.showStandardStreams = true   // display test output on console
     systemProperties['concordion.output.dir'] = "$reporting.baseDir/spec"  // write output to build/reports/spec
     outputs.upToDateWhen { false }   // force tests to run even if code hasn't changed
-    finalizedBy jacocoTestReport
 }
 
 sonarqube {
@@ -90,7 +89,7 @@ sonarqube {
 }
 
 tasks['sonarqube'].dependsOn test
-tasks['sonarqube'].dependsOn integrationTest
+tasks['sonarqube'].dependsOn integrationtest
 
 jacocoTestReport {
     reports {
